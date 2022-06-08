@@ -16,6 +16,7 @@ class Ticket extends Model
     public const CITY_COLUMN = 'city';
     public const LOCATION_COLUMN = 'location';
     public const DATE_AND_TIME_COLUMN = 'date_and_time';
+    public const CREATED_AT_COLUMN = 'created_at';
 
     protected $table = self::TABLE;
     protected $fillable = [
@@ -26,7 +27,8 @@ class Ticket extends Model
     ];
 
     protected $casts = [
-        self::DATE_AND_TIME_COLUMN => 'datetime'
+        self::DATE_AND_TIME_COLUMN => 'datetime',
+        self::CREATED_AT_COLUMN    => 'datetime'
     ];
 
     public function getId(): int
@@ -52,5 +54,10 @@ class Ticket extends Model
     public function getDateAndTime(): Carbon
     {
         return $this->getAttribute(self::DATE_AND_TIME_COLUMN);
+    }
+
+    public function getCreatedAt(): Carbon
+    {
+        return $this->getAttribute(self::CREATED_AT_COLUMN);
     }
 }

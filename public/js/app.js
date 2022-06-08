@@ -2160,12 +2160,11 @@ module.exports = {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./pages/index */ "./resources/js/pages/index.js");
 
 /***/ }),
 
@@ -2206,6 +2205,146 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/pages/index.js":
+/*!*************************************!*\
+  !*** ./resources/js/pages/index.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_tickets_TicketService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/tickets/TicketService */ "./resources/js/services/tickets/TicketService.js");
+
+
+if (document.location.pathname.startsWith('/admin/tickets') === true) {
+  _services_tickets_TicketService__WEBPACK_IMPORTED_MODULE_0__["default"].init();
+}
+
+/***/ }),
+
+/***/ "./resources/js/services/tickets/TicketService.js":
+/*!********************************************************!*\
+  !*** ./resources/js/services/tickets/TicketService.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _templates_ticket_plan_ticket_plan_template__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../templates/ticket-plan/ticket-plan-template */ "./resources/js/templates/ticket-plan/ticket-plan-template.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var TicketService = /*#__PURE__*/function () {
+  function TicketService() {
+    _classCallCheck(this, TicketService);
+
+    this.create = this.create.bind(this);
+    this["delete"] = this["delete"].bind(this);
+  }
+  /**
+   * @returns {HTMLElement|null}
+   */
+
+
+  _createClass(TicketService, [{
+    key: "ticketsPlansNode",
+    get: function get() {
+      return document.getElementById(TicketService.TICKETS_PLANS_NODE_ID);
+    }
+    /**
+     * @returns {HTMLElement|null}
+     */
+
+  }, {
+    key: "addPlanBtnNode",
+    get: function get() {
+      return document.getElementById(TicketService.ADD_PLAN_BTN_ID);
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      this.create();
+      this.eventsBinding();
+    }
+  }, {
+    key: "eventsBinding",
+    value: function eventsBinding() {
+      var _this = this;
+
+      if (!this.ticketsPlansNode instanceof HTMLElement) {
+        return;
+      }
+
+      if (this.addPlanBtnNode instanceof HTMLElement) {
+        this.addPlanBtnNode.removeEventListener('click', this.create);
+        this.addPlanBtnNode.addEventListener('click', this.create);
+      }
+
+      this.ticketsPlansNode.querySelectorAll(TicketService.PLAN_ITEM_CLASS_NAME).forEach(function (replyItem) {
+        replyItem.querySelector(TicketService.DELETE_TICKET_CLASS_NAME).removeEventListener('click', _this["delete"]);
+        replyItem.querySelector(TicketService.DELETE_TICKET_CLASS_NAME).addEventListener('click', _this["delete"]);
+      });
+    }
+  }, {
+    key: "create",
+    value: function create() {
+      var order = this.countTicketPlans();
+      this.addPlanBtnNode.insertAdjacentHTML('beforebegin', _templates_ticket_plan_ticket_plan_template__WEBPACK_IMPORTED_MODULE_0__["default"].replaceAll('_ORDER_', order));
+      this.eventsBinding();
+    }
+  }, {
+    key: "delete",
+    value: function _delete(e) {
+      e.preventDefault();
+      e.currentTarget.parentElement.remove();
+    }
+  }, {
+    key: "countTicketPlans",
+    value: function countTicketPlans() {
+      return this.ticketsPlansNode.querySelectorAll(TicketService.PLAN_ITEM_CLASS_NAME).length;
+    }
+  }]);
+
+  return TicketService;
+}();
+
+_defineProperty(TicketService, "TICKETS_PLANS_NODE_ID", 'ticket-plans');
+
+_defineProperty(TicketService, "ADD_PLAN_BTN_ID", 'add-new-ticket-plan');
+
+_defineProperty(TicketService, "PLAN_ITEM_CLASS_NAME", '.plan-item');
+
+_defineProperty(TicketService, "DELETE_TICKET_CLASS_NAME", '.delete-ticket-plan');
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new TicketService());
+
+/***/ }),
+
+/***/ "./resources/js/templates/ticket-plan/ticket-plan-template.js":
+/*!********************************************************************!*\
+  !*** ./resources/js/templates/ticket-plan/ticket-plan-template.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*html*/"\n<div class=\"mb-3 plan-item\">\n    <div class=\"form-group mb-3\">\n        <label for=\"ticket_plans-_ORDER_-nameInput\" class=\"form-label\">Title</label>\n        <input class=\"form-control\" id=\"ticket_plans-_ORDER_-nameInput\" type=\"text\" name=\"ticket_plans[_ORDER_][name]\" required>\n    </div>\n\n    <div class=\"form-group mb-3\">\n        <label for=\"ticket_plans-_ORDER_-priceInput\" class=\"form-label\">Price</label>\n        <input class=\"form-control\" id=\"ticket_plans-_ORDER_-priceInput\" type=\"number\" step=\"any\" name=\"ticket_plans[_ORDER_][price]\" required>\n    </div>\n\n    <div class=\"form-group mb-3\">\n        <label for=\"ticket_plans-_ORDER_-stockInput\" class=\"form-label\">Stock</label>\n        <input class=\"form-control\" id=\"ticket_plans-_ORDER_-stockInput\" type=\"number\" step=\"1\" name=\"ticket_plans[_ORDER_][stock]\" required>\n    </div>\n\n    <button type=\"button\" role=\"button\" class=\"btn btn-sm btn-danger delete-ticket-plan\"><i class=\"fa fa-trash\"></i> Remove</button>\n</div>\n");
 
 /***/ }),
 

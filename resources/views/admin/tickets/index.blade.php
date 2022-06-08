@@ -11,7 +11,7 @@
       <h1>Tickets List</h1>
     </div>
     <div class="col">
-      <a href="#" class="btn btn-primary d-block float-end"><i class="fa fa-plus me-2"></i>Add Ticket</a>
+      <a href="{{ route('admin.tickets.create') }}" class="btn btn-primary d-block float-end"><i class="fa fa-plus me-2"></i>Add Ticket</a>
     </div>
   </div>
 
@@ -22,6 +22,7 @@
       <th>City</th>
       <th>Location</th>
       <th>Date / Time</th>
+      <th>Created At</th>
     </tr>
     @foreach($tickets as $key => $ticket)
       <tr>
@@ -30,6 +31,7 @@
         <td>{{ $ticket->getCity() }}</td>
         <td>{{ $ticket->getLocation() }}</td>
         <td>{{ $ticket->getDateAndTime() }}</td>
+        <td>{{ $ticket->getCreatedAt() }}</td>
       </tr>
     @endforeach
   </table>
