@@ -18,6 +18,10 @@ class User extends Authenticatable
     public const ID_COLUMN = 'id';
     public const USER_TYPE_COLUMN = 'user_type';
     public const EMAIL_COLUMN = 'email';
+    public const NAME_COLUMN = 'name';
+    public const PASSWORD_COLUMN = 'password';
+    public const REMEMBER_TOKEN_COLUMN = 'remember_token';
+    public const EMAIL_VERIFIED_AT_COLUMN = 'email_verified_at';
 
     /**
      * The attributes that are mass assignable.
@@ -25,9 +29,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        self::NAME_COLUMN,
+        self::EMAIL_COLUMN,
+        self::PASSWORD_COLUMN,
     ];
 
     /**
@@ -36,8 +40,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        self::PASSWORD_COLUMN,
+        self::REMEMBER_TOKEN_COLUMN,
     ];
 
     /**
@@ -46,6 +50,6 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        self::EMAIL_VERIFIED_AT_COLUMN => 'datetime',
     ];
 }
