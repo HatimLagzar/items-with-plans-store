@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,5 +32,25 @@ class Ticket extends Model
     public function getId(): int
     {
         return $this->getAttribute(self::ID_COLUMN);
+    }
+
+    public function getTitle(): string
+    {
+        return $this->getAttribute(self::TITLE_COLUMN);
+    }
+
+    public function getCity(): string
+    {
+        return $this->getAttribute(self::CITY_COLUMN);
+    }
+
+    public function getLocation(): string
+    {
+        return $this->getAttribute(self::LOCATION_COLUMN);
+    }
+
+    public function getDateAndTime(): Carbon
+    {
+        return $this->getAttribute(self::DATE_AND_TIME_COLUMN);
     }
 }

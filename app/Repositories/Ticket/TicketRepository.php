@@ -4,6 +4,7 @@ namespace App\Repositories\Ticket;
 
 use App\Models\Ticket;
 use App\Repositories\AbstractEloquentRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class TicketRepository extends AbstractEloquentRepository
 {
@@ -18,6 +19,16 @@ class TicketRepository extends AbstractEloquentRepository
     {
         return $this->getQueryBuilder()
                     ->create($attributes);
+    }
+
+    /**
+     * @return Collection|Ticket[]
+     */
+    public function getAll(): Collection|array
+    {
+        return $this->getQueryBuilder()
+                    ->latest()
+                    ->get();
     }
 
     protected function getModelClass(): string
