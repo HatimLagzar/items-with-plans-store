@@ -23,4 +23,29 @@ class TicketPlan extends Model
         self::PRICE_COLUMN,
         self::STOCK_COLUMN,
     ];
+
+    public function getId(): int
+    {
+        return $this->getAttribute(self::ID_COLUMN);
+    }
+
+    public function getName(): string
+    {
+        return $this->getAttribute(self::NAME_COLUMN);
+    }
+
+    public function getTicketId(): int
+    {
+        return $this->getAttribute(self::TICKET_ID_COLUMN);
+    }
+
+    public function getPrice(): int
+    {
+        return $this->getAttribute(self::PRICE_COLUMN);
+    }
+
+    public function getStock(): int
+    {
+        return $this->getAttribute(self::STOCK_COLUMN);
+    }
 }

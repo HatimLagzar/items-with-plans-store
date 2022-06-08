@@ -23,6 +23,7 @@
       <th>Location</th>
       <th>Date / Time</th>
       <th>Created At</th>
+      <th>Actions</th>
     </tr>
     @foreach($tickets as $key => $ticket)
       <tr>
@@ -32,6 +33,9 @@
         <td>{{ $ticket->getLocation() }}</td>
         <td>{{ $ticket->getDateAndTime() }}</td>
         <td>{{ $ticket->getCreatedAt() }}</td>
+        <td>
+          <a href="{{ route('admin.tickets.edit', ['id' => $ticket->getId()]) }}" class="btn btn-sm btn-secondary"><i class="fa fa-pencil me-2"></i>Edit</a>
+        </td>
       </tr>
     @endforeach
   </table>

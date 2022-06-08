@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,6 +31,10 @@ class Ticket extends Model
         self::DATE_AND_TIME_COLUMN => 'datetime',
         self::CREATED_AT_COLUMN    => 'datetime'
     ];
+    /**
+     * @var TicketPlan[]|Collection|null
+     */
+    private null|array|Collection $plans = null;
 
     public function getId(): int
     {
@@ -59,5 +64,23 @@ class Ticket extends Model
     public function getCreatedAt(): Carbon
     {
         return $this->getAttribute(self::CREATED_AT_COLUMN);
+    }
+
+    /**
+     * @return  Collection|TicketPlan[]
+     */
+    public function getPlans(): Collection|array
+    {
+        return $this->plans;
+    }
+
+    /**
+     * @param  Collection|TicketPlan[]  $plans
+     */
+    public function setPlans(Collection|array $plans): self
+    {
+        $this->plans = $plans;
+
+        return $this;
     }
 }

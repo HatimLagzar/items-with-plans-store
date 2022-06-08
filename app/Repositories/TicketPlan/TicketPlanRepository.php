@@ -4,6 +4,7 @@ namespace App\Repositories\TicketPlan;
 
 use App\Models\TicketPlan;
 use App\Repositories\AbstractEloquentRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class TicketPlanRepository extends AbstractEloquentRepository
 {
@@ -18,6 +19,16 @@ class TicketPlanRepository extends AbstractEloquentRepository
     {
         return $this->getQueryBuilder()
                     ->create($attributes);
+    }
+
+    /**
+     * @return Collection|TicketPlan[]
+     */
+    public function findByTicket(int $ticketId): Collection|array
+    {
+        return $this->getQueryBuilder()
+                    ->where(TicketPlan::TICKET_ID_COLUMN, $ticketId)
+                    ->get();
     }
 
     protected function getModelClass(): string
