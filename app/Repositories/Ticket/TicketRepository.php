@@ -5,6 +5,7 @@ namespace App\Repositories\Ticket;
 use App\Models\Ticket;
 use App\Repositories\AbstractEloquentRepository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class TicketRepository extends AbstractEloquentRepository
 {
@@ -43,6 +44,17 @@ class TicketRepository extends AbstractEloquentRepository
         return $this->getQueryBuilder()
                     ->where(Ticket::ID_COLUMN, $id)
                     ->delete() > 0;
+    }
+
+    /**
+     * @return Collection|Ticket[]
+     */
+    public function closestFive(): Collection|array
+    {
+        return $this->getQueryBuilder()
+                    ->orderBy(DB::raw(sprintf('ABS(DATEDIFF(%s.%s, NOW()))', Ticket::TABLE, Ticket::DATE_AND_TIME_COLUMN)))
+                    ->limit(5)
+                    ->get();
     }
 
     protected function getModelClass(): string

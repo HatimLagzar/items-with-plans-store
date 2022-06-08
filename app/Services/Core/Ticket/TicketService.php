@@ -75,4 +75,12 @@ class TicketService
     {
         return $this->ticketRepository->deleteById($id);
     }
+
+    /**
+     * @return Ticket[]|Collection
+     */
+    public function closestFive(): Collection|array
+    {
+        return $this->ticketRepository->closestFive();
+    }
 }
