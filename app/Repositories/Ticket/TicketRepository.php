@@ -38,6 +38,13 @@ class TicketRepository extends AbstractEloquentRepository
                     ->update($attributes) > 0;
     }
 
+    public function deleteById(int $id): bool
+    {
+        return $this->getQueryBuilder()
+                    ->where(Ticket::ID_COLUMN, $id)
+                    ->delete() > 0;
+    }
+
     protected function getModelClass(): string
     {
         return Ticket::class;

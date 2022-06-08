@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Auth\AuthenticateController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\Ticket\CreateController as CreateTicketsController;
+use App\Http\Controllers\Admin\Ticket\DestroyController as DestroyTicketsController;
 use App\Http\Controllers\Admin\Ticket\EditController as EditTicketsController;
 use App\Http\Controllers\Admin\Ticket\IndexController as IndexTicketsController;
 use App\Http\Controllers\Admin\Ticket\StoreController as StoreTicketsController;
@@ -27,5 +28,6 @@ Route::middleware(IsAdminMiddleware::class)->group(function () {
         Route::post('/', StoreTicketsController::class)->name('store');
         Route::get('{id}/edit', EditTicketsController::class)->name('edit');
         Route::put('{id}', UpdateTicketsController::class)->name('update');
+        Route::delete('{id}', DestroyTicketsController::class)->name('destroy');
     });
 });

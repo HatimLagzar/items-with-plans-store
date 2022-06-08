@@ -70,4 +70,9 @@ class TicketService
 
         return $this->ticketRepository->update($ticket->getId(), $attributes);
     }
+
+    public function deleteById(int $id): bool
+    {
+        return $this->ticketRepository->deleteById($id);
+    }
 }

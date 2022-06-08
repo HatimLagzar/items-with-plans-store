@@ -35,6 +35,11 @@
         <td>{{ $ticket->getCreatedAt() }}</td>
         <td>
           <a href="{{ route('admin.tickets.edit', ['id' => $ticket->getId()]) }}" class="btn btn-sm btn-secondary"><i class="fa fa-pencil me-2"></i>Edit</a>
+          <form action="{{ route('admin.tickets.destroy', ['id' => $ticket->getId()]) }}" class="d-inline-block" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-sm btn-danger"><i class="fa fa-trash me-2"></i>Delete</button>
+          </form>
         </td>
       </tr>
     @endforeach

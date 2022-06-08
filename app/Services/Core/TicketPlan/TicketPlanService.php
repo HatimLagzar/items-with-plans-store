@@ -28,4 +28,9 @@ class TicketPlanService
     {
         return $this->ticketPlanRepository->update($ticketPlan->getId(), $attributes);
     }
+
+    public function deleteByTicketId(int $id): bool
+    {
+        return $this->ticketPlanRepository->deleteByTicketId($id);
+    }
 }
