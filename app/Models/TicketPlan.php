@@ -23,8 +23,4 @@ class TicketPlan extends Model
         self::PRICE_COLUMN,
         self::STOCK_COLUMN,
     ];
-
-    protected $casts = [
-        self::PRICE_COLUMN => ''
-    ];
 }
