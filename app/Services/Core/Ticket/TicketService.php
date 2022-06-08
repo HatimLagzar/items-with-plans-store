@@ -58,4 +58,16 @@ class TicketService
 
         return $ticket;
     }
+
+    public function update(Ticket $ticket, array $attributes): bool
+    {
+        $attributes = Arr::only($attributes, [
+            Ticket::TITLE_COLUMN,
+            Ticket::CITY_COLUMN,
+            Ticket::LOCATION_COLUMN,
+            Ticket::DATE_AND_TIME_COLUMN,
+        ]);
+
+        return $this->ticketRepository->update($ticket->getId(), $attributes);
+    }
 }

@@ -31,6 +31,13 @@ class TicketRepository extends AbstractEloquentRepository
                     ->get();
     }
 
+    public function update(int $id, array $attributes): bool
+    {
+        return $this->getQueryBuilder()
+                    ->where(Ticket::ID_COLUMN, $id)
+                    ->update($attributes) > 0;
+    }
+
     protected function getModelClass(): string
     {
         return Ticket::class;

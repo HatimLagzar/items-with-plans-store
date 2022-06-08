@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Ticket\CreateController as CreateTicketsControlle
 use App\Http\Controllers\Admin\Ticket\EditController as EditTicketsController;
 use App\Http\Controllers\Admin\Ticket\IndexController as IndexTicketsController;
 use App\Http\Controllers\Admin\Ticket\StoreController as StoreTicketsController;
+use App\Http\Controllers\Admin\Ticket\UpdateController as UpdateTicketsController;
 use App\Http\Middleware\IsAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,6 @@ Route::middleware(IsAdminMiddleware::class)->group(function () {
         Route::get('create', CreateTicketsController::class)->name('create');
         Route::post('/', StoreTicketsController::class)->name('store');
         Route::get('{id}/edit', EditTicketsController::class)->name('edit');
+        Route::put('{id}', UpdateTicketsController::class)->name('update');
     });
 });

@@ -23,4 +23,9 @@ class TicketPlanService
     {
         return $this->ticketPlanRepository->create($attributes);
     }
+
+    public function update(TicketPlan $ticketPlan, array $attributes): bool
+    {
+        return $this->ticketPlanRepository->update($ticketPlan->getId(), $attributes);
+    }
 }
