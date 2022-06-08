@@ -27,4 +27,9 @@ class Ticket extends Model
     protected $casts = [
         self::DATE_AND_TIME_COLUMN => 'datetime'
     ];
+
+    public function getId(): int
+    {
+        return $this->getAttribute(self::ID_COLUMN);
+    }
 }
