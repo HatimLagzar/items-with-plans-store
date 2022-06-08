@@ -19,6 +19,7 @@ class CreateTicketPlansService
     {
         foreach ($plans as $plan) {
             $plan[TicketPlan::TICKET_ID_COLUMN] = $ticket->getId();
+            $plan[TicketPlan::PRICE_COLUMN]     = $plan[TicketPlan::PRICE_COLUMN] * 100;
 
             $this->ticketPlanService->create($plan);
         }
