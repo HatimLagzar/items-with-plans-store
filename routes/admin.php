@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\AuthenticateController;
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Middleware\IsAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('login', LoginController::class)
+     ->name('login');
+
+Route::post('login', AuthenticateController::class)
+     ->name('authenticate');
+
+Route::middleware(IsAdminMiddleware::class)->group(function () {
+    Route::get('/', HomeController::class)->name('home');
 });

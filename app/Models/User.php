@@ -23,33 +23,30 @@ class User extends Authenticatable
     public const REMEMBER_TOKEN_COLUMN = 'remember_token';
     public const EMAIL_VERIFIED_AT_COLUMN = 'email_verified_at';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $table = self::TABLE;
+
     protected $fillable = [
         self::NAME_COLUMN,
         self::EMAIL_COLUMN,
         self::PASSWORD_COLUMN,
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         self::PASSWORD_COLUMN,
         self::REMEMBER_TOKEN_COLUMN,
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         self::EMAIL_VERIFIED_AT_COLUMN => 'datetime',
     ];
+
+    public function isAdmin(): bool
+    {
+        return $this->getUserType() === self::ADMIN_TYPE;
+    }
+
+    public function getUserType(): int
+    {
+        return $this->getAttribute(self::USER_TYPE_COLUMN);
+    }
 }
