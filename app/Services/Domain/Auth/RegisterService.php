@@ -22,8 +22,13 @@ class RegisterService
     /**
      * @throws EmailAlreadyInUseException
      */
-    public function register(string $firstName, string $lastName, string $email, string $phone, string $password = null): User
-    {
+    public function register(
+        string $firstName,
+        string $lastName,
+        string $email,
+        string $phone,
+        string $password = null
+    ): User {
         $firstName = htmlspecialchars($firstName);
         $lastName  = htmlspecialchars($lastName);
         $email     = filter_var($email, FILTER_SANITIZE_EMAIL);

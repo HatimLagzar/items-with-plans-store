@@ -33,4 +33,9 @@ class UserService
     {
         return $this->userRepository->findByEmail($email);
     }
+
+    public function update(User $user, array $attributes): bool
+    {
+        return $this->userRepository->update($user->getId(), $attributes);
+    }
 }

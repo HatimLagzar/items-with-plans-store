@@ -1,13 +1,22 @@
 <?php
 
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\Login\LoginController;
+use App\Http\Controllers\Client\Login\LogoutController;
+use App\Http\Controllers\Client\Login\ShowLoginPageController;
 use App\Http\Controllers\Client\Order\OrderController;
 use App\Http\Controllers\Client\Order\ShowOrderSuccessController;
+use App\Http\Controllers\Client\Register\RegisterController;
+use App\Http\Controllers\Client\Register\ShowRegisterPageController;
 use App\Http\Controllers\Client\Ticket\ShowTicketController;
 use App\Http\Controllers\Client\TicketPlan\ShowController as AskForPaymentMethodPlanController;
 use App\Http\Controllers\Client\Verification\AskForVerificationController;
 use App\Http\Controllers\Client\Verification\ResendVerificationController;
 use App\Http\Controllers\Client\Verification\VerifyController;
+use App\Http\Controllers\ResetPassword\EmailResetPasswordController;
+use App\Http\Controllers\ResetPassword\SetNewPasswordController;
+use App\Http\Controllers\ResetPassword\ShowResetPasswordController;
+use App\Http\Controllers\ResetPassword\ShowResetPasswordFormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +40,30 @@ Route::name('verification.')->group(function () {
         Route::post('resend', ResendVerificationController::class)
              ->name('resend');
     });
+});
+
+Route::get('login', ShowLoginPageController::class)->name('login-page');
+Route::post('login', LoginController::class)->name('login');
+
+Route::post('logout', LogoutController::class)->name('logout')->middleware('auth');
+
+Route::get('register', ShowRegisterPageController::class)->name('register-page');
+Route::post('register', RegisterController::class)->name('register');
+
+Route::prefix('forgot-password')->name('password.')->group(function () {
+    Route::get('/', ShowResetPasswordController::class)
+         ->middleware('guest')
+         ->name('request');
+
+    Route::post('/', EmailResetPasswordController::class)
+         ->middleware('guest')
+         ->name('email');
+
+    Route::get('{token}', ShowResetPasswordFormController::class)
+         ->name('reset');
+
+    Route::post('update', SetNewPasswordController::class)
+         ->name('update');
 });
 
 

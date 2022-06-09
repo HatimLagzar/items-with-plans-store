@@ -35,6 +35,13 @@ class UserRepository extends AbstractEloquentRepository
                     ->first();
     }
 
+    public function update(int $userId, array $attributes): bool
+    {
+        return $this->getQueryBuilder()
+                    ->where(User::ID_COLUMN, $userId)
+                    ->update($attributes) > 0;
+    }
+
     protected function getModelClass(): string
     {
         return User::class;

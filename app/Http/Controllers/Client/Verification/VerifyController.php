@@ -39,7 +39,7 @@ class VerifyController extends Controller
                 ->with('success', __('Email Address verified successfully.'));
         } catch (InvalidTokenException $e) {
             return redirect()
-                ->route('verification.ask')
+                ->route('home')
                 ->with('error', __('Invalid token!'));
         } catch (Throwable $e) {
             Log::error('failed to verify email address', [
@@ -48,7 +48,7 @@ class VerifyController extends Controller
             ]);
 
             return redirect()
-                ->route('verification.ask')
+                ->route('home')
                 ->with('error', __('Error occurred, please retry later!'));
         }
     }
