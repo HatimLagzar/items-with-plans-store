@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('ticket_plan_id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedTinyInteger('payment_type');
             $table->timestamps();
         });
     }

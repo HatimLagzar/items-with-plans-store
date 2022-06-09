@@ -23,4 +23,14 @@ class UserService
     {
         return $this->userRepository->create($attributes);
     }
+
+    public function findByPhoneNumberAndEmail(string $phoneNumber, string $email): ?User
+    {
+        return $this->userRepository->findByPhoneNumberAndEmail($phoneNumber, $email);
+    }
+
+    public function findByEmail(mixed $email): ?User
+    {
+        return $this->userRepository->findByEmail($email);
+    }
 }

@@ -22,11 +22,12 @@ class RegisterService
     /**
      * @throws EmailAlreadyInUseException
      */
-    public function register(string $name, string $email, string $password, int $countryId): User
+    public function register(string $firstName, string $lastName, string $email, string $phone, string $password = null): User
     {
-        $name     = htmlspecialchars($name);
-        $email    = filter_var($email, FILTER_SANITIZE_EMAIL);
-        $password = htmlspecialchars($password);
+        $firstName = htmlspecialchars($firstName);
+        $lastName  = htmlspecialchars($lastName);
+        $email     = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $password  = htmlspecialchars($password);
 
         $existingAccount = $this->userService->findByEmail($email);
         if ($existingAccount instanceof User) {
@@ -34,12 +35,13 @@ class RegisterService
         }
 
         $user = $this->userService->create([
-            User::NAME_COLUMN               => $name,
+            User::FIRST_NAME_COLUMN         => $firstName,
+            User::LAST_NAME_COLUMN          => $lastName,
             User::EMAIL_COLUMN              => $email,
-            User::PASSWORD_COLUMN           => Hash::make($password),
-            User::COUNTRY_ID_COLUMN         => $countryId,
+            User::PHONE_COLUMN              => $phone,
+            User::PASSWORD_COLUMN           => $password ? Hash::make($password) : null,
             User::VERIFICATION_TOKEN_COLUMN => Str::random(60),
-            User::TYPE_COLUMN               => User::NORMAL_TYPE,
+            User::USER_TYPE_COLUMN          => User::NORMAL_TYPE,
         ]);
 
         Mail::to($user)->queue(new EmailVerificationMail($user));

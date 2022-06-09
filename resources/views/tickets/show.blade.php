@@ -30,7 +30,7 @@
               <h4>{{ $plan->getStock() . ' ' . __('Tickets left') }}</h4>
             </div>
             <div class="col-lg-3 col-sm-4 col-12 d-flex flex-column justify-content-center align-items-center buy-now-wrapper">
-              <form action="#">
+              <form action="{{ route('tickets.plans.order', ['id' => $plan->getId()]) }}">
                 <button class="btn btn-primary buy-ticket"><i class="fa fa-ticket me-2"></i>{{ __('Buy Ticket for ') . '€' . number_format($plan->getPrice() / 100, 2) }}</button>
               </form>
             </div>

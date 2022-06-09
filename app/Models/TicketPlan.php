@@ -24,6 +24,8 @@ class TicketPlan extends Model
         self::STOCK_COLUMN,
     ];
 
+    private ?Ticket $ticket = null;
+
     public function getId(): int
     {
         return $this->getAttribute(self::ID_COLUMN);
@@ -47,5 +49,17 @@ class TicketPlan extends Model
     public function getStock(): int
     {
         return $this->getAttribute(self::STOCK_COLUMN);
+    }
+
+    public function getTicket(): ?Ticket
+    {
+        return $this->ticket;
+    }
+
+    public function setTicket(?Ticket $ticket): self
+    {
+        $this->ticket = $ticket;
+
+        return $this;
     }
 }

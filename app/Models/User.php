@@ -18,17 +18,23 @@ class User extends Authenticatable
     public const ID_COLUMN = 'id';
     public const USER_TYPE_COLUMN = 'user_type';
     public const EMAIL_COLUMN = 'email';
-    public const NAME_COLUMN = 'name';
     public const PASSWORD_COLUMN = 'password';
     public const REMEMBER_TOKEN_COLUMN = 'remember_token';
     public const EMAIL_VERIFIED_AT_COLUMN = 'email_verified_at';
+    public const PHONE_COLUMN = 'phone';
+    public const VERIFICATION_TOKEN_COLUMN = 'verification_token';
+    public const LAST_NAME_COLUMN = 'last_name';
+    public const FIRST_NAME_COLUMN = 'first_name';
 
     protected $table = self::TABLE;
 
     protected $fillable = [
-        self::NAME_COLUMN,
+        self::FIRST_NAME_COLUMN,
+        self::LAST_NAME_COLUMN,
         self::EMAIL_COLUMN,
         self::PASSWORD_COLUMN,
+        self::VERIFICATION_TOKEN_COLUMN,
+        self::PHONE_COLUMN,
     ];
 
     protected $hidden = [
@@ -45,8 +51,28 @@ class User extends Authenticatable
         return $this->getUserType() === self::ADMIN_TYPE;
     }
 
+    public function getVerificationToken(): string
+    {
+        return $this->getAttribute(self::VERIFICATION_TOKEN_COLUMN);
+    }
+
     public function getUserType(): int
     {
         return $this->getAttribute(self::USER_TYPE_COLUMN);
+    }
+
+    public function getId(): int
+    {
+        return $this->getAttribute(self::ID_COLUMN);
+    }
+
+    public function getFirstName(): string
+    {
+        return $this->getAttribute(self::FIRST_NAME_COLUMN);
+    }
+
+    public function getLastName(): string
+    {
+        return $this->getAttribute(self::LAST_NAME_COLUMN);
     }
 }

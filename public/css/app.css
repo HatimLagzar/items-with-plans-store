@@ -52,6 +52,10 @@ h6 {
   font-family: "Roboto Slab", sans-serif;
 }
 
+h1 {
+  font-size: 3.5rem;
+}
+
 #navbar {
   background-color: rgba(0, 0, 0, 0.8) !important;
   padding: 0.7rem 0;
@@ -66,6 +70,10 @@ h6 {
   font-size: 1.125rem;
   font-family: Roboto, sans-serif;
   padding: 0.5rem 0.625rem;
+}
+#navbar i {
+  color: white !important;
+  font-size: 1.5rem;
 }
 
 #footer {
@@ -179,10 +187,6 @@ h6 {
 @media screen and (max-width: 768px) {
   :root {
     font-size: 14px;
-  }
-  #home-page #header nav i {
-    color: white !important;
-    font-size: 1.5rem;
   }
   #home-page #header #hero h1 {
     max-width: 90%;

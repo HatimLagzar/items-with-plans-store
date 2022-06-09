@@ -14,6 +14,9 @@
 </head>
 <body>
 
+<x-error-alert/>
+<x-success-alert/>
+
 @yield('content')
 
 <footer id="footer">
