@@ -1,0 +1,17 @@
+#navbar {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  padding: 0.7rem 0;
+
+  .navbar-brand {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 1.75rem;
+  }
+
+  a {
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.125rem;
+    font-family: Roboto, sans-serif;
+    padding: .5rem 0.625rem;
+  }
+}

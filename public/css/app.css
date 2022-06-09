@@ -34,7 +34,7 @@ section h2 {
   border-color: #8E44AD !important;
   font-family: "Roboto Slab", sans-serif;
   font-size: 1.25rem;
-  padding: 1.25rem 2.75rem;
+  padding: 1.25rem 1.75rem;
   border-radius: 100px;
   text-transform: uppercase;
 }
@@ -52,25 +52,91 @@ h6 {
   font-family: "Roboto Slab", sans-serif;
 }
 
-#home-page #header {
-  background-image: url(/images/header.jpg);
-  background-position-y: 60%;
-  height: 90vh;
-}
-#home-page #header nav {
+#navbar {
   background-color: rgba(0, 0, 0, 0.8) !important;
   padding: 0.7rem 0;
 }
-#home-page #header nav .navbar-brand {
+#navbar .navbar-brand {
   font-family: "Roboto Slab", sans-serif;
   font-size: 1.75rem;
 }
-#home-page #header nav a {
+#navbar a {
   color: white;
   text-transform: uppercase;
   font-size: 1.125rem;
   font-family: Roboto, sans-serif;
   padding: 0.5rem 0.625rem;
+}
+
+#footer {
+  background: rgba(142, 68, 173, 0.3);
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 1.125rem;
+  padding: 1.25rem 0;
+}
+#footer p {
+  margin-bottom: 0;
+}
+
+.ticket-item {
+  background-color: #fff;
+  width: 100%;
+  color: black;
+  margin-bottom: 1.5625rem;
+  font-family: "Roboto Slab", sans-serif;
+  text-transform: uppercase;
+}
+.ticket-item .ticket-day {
+  color: #8E44AD;
+  font-size: 1.875rem;
+  text-align: center;
+  line-height: 40px;
+  margin-bottom: 2px;
+}
+.ticket-item .buy-ticket {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1.125rem;
+}
+.ticket-item .ticket-time {
+  display: block;
+  color: #888;
+}
+.ticket-item h3 {
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 40px;
+  margin-bottom: 0.3rem;
+}
+.ticket-item h4 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.ticket-item .ticket-title {
+  border-right: 2px dashed #888;
+  padding-top: 2.3125rem;
+  padding-bottom: 2.3125rem;
+}
+
+@media screen and (max-width: 768px) {
+  .ticket-item {
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  .ticket-item .ticket-title {
+    border-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .ticket-item .ticket-title h3 {
+    line-height: 2rem;
+    margin-bottom: 0.75rem;
+  }
+}
+#home-page #header {
+  background-image: url(/images/header.jpg);
+  background-position-y: 60%;
+  height: 90vh;
 }
 #home-page #header img {
   margin-top: -450px;
@@ -101,45 +167,6 @@ h6 {
 #home-page #tickets h2 {
   font-size: 2.5rem;
 }
-#home-page #tickets .ticket-item {
-  background-color: #fff;
-  width: 100%;
-  color: black;
-  margin-bottom: 1.5625rem;
-  font-family: "Roboto Slab", sans-serif;
-  text-transform: uppercase;
-}
-#home-page #tickets .ticket-item .ticket-day {
-  color: #8E44AD;
-  font-size: 1.875rem;
-  text-align: center;
-  line-height: 40px;
-  margin-bottom: 2px;
-}
-#home-page #tickets .ticket-item .buy-ticket {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-size: 1.125rem;
-}
-#home-page #tickets .ticket-item .ticket-time {
-  display: block;
-  color: #888;
-}
-#home-page #tickets .ticket-item h3 {
-  font-size: 1.875rem;
-  font-weight: 500;
-  line-height: 40px;
-  margin-bottom: 0.3rem;
-}
-#home-page #tickets .ticket-item h4 {
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
-}
-#home-page #tickets .ticket-item .ticket-title {
-  border-right: 2px dashed #888;
-  padding-top: 2.3125rem;
-  padding-bottom: 2.3125rem;
-}
 #home-page #tickets a {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -147,15 +174,6 @@ h6 {
   margin: 0 auto;
   display: block;
   max-width: 20%;
-}
-#home-page #footer {
-  background: rgba(142, 68, 173, 0.3);
-  font-family: "Roboto Slab", sans-serif;
-  font-size: 1.125rem;
-  padding: 1.25rem 0;
-}
-#home-page #footer p {
-  margin-bottom: 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -174,19 +192,6 @@ h6 {
   #home-page #header #hero a {
     top: 60%;
     width: 75%;
-  }
-  #home-page #tickets .ticket-item {
-    padding-bottom: 1.5rem;
-    padding-top: 1.5rem;
-  }
-  #home-page #tickets .ticket-item .ticket-title {
-    border-right: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  #home-page #tickets .ticket-item .ticket-title h3 {
-    line-height: 2rem;
-    margin-bottom: 0.75rem;
   }
   #home-page #tickets .see-all-tickets {
     max-width: 55%;

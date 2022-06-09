@@ -16,6 +16,11 @@
 
 @yield('content')
 
+<footer id="footer">
+  <div class="container">
+    <p>{!! __('All rights reserved &copy; 2022') !!}</p>
+  </div>
+</footer>
 @stack('scripts')
 <script src="{{ asset('js/app.js') }}"></script>
 </body>

@@ -9,30 +9,7 @@
 @section('content')
   <div id="home-page">
     <header id="header">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="#">{{ env('APP_NAME') }}</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">{{ __('Home') }}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('Login') }}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('Register') }}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('Contact') }}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <x-navbar/>
       <div id="hero">
         <h1>{!! __('LIVE EVERY DAY AS IF IT IS A FESTIVAL TURN YOUR LIFE INTO A CELEBRATION') !!}</h1>
         <a href="#tickets" class="btn btn-primary mx-auto">{{ __('Browse coming concert') }}</a>
@@ -58,7 +35,7 @@
                 <h4>{{ $ticket->getLocation() }}</h4>
               </div>
               <div class="col-lg-3 col-sm-4 col-12 d-flex flex-column justify-content-center align-items-center buy-now-wrapper">
-                <form action="#">
+                <form action="{{ route('tickets.show', ['id' => $ticket->getId()]) }}">
                   <button class="btn btn-primary buy-ticket"><i class="fa fa-ticket me-2"></i>{{ __('Buy Ticket') }}</button>
                 </form>
               </div>
@@ -69,11 +46,5 @@
         <a href="#" class="btn btn-primary see-all-tickets">{{ __('See All Tickets') }}</a>
       </div>
     </section>
-
-    <footer id="footer">
-      <div class="container">
-        <p>{!! __('All rights reserved &copy; 2022') !!}</p>
-      </div>
-    </footer>
   </div>
 @endsection

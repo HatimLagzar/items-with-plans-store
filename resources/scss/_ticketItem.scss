@@ -1,0 +1,65 @@
+.ticket-item {
+  background-color: #fff;
+  width: 100%;
+  color: black;
+  margin-bottom: 1.5625rem;
+  font-family: "Roboto Slab", sans-serif;
+  text-transform: uppercase;
+  //padding-top: 2.3125rem;
+  //padding-bottom: 2.3125rem;
+
+  .ticket-day {
+    color: #8E44AD;
+    font-size: 1.875rem;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 2px;
+  }
+
+  .buy-ticket {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .ticket-time {
+    display: block;
+    color: #888;
+  }
+
+  h3 {
+    font-size: 1.875rem;
+    font-weight: 500;
+    line-height: 40px;
+    margin-bottom: 0.3rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .ticket-title {
+    border-right: 2px dashed #888;
+    padding-top: 2.3125rem;
+    padding-bottom: 2.3125rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ticket-item {
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+
+    .ticket-title {
+      border-right: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+
+      h3 {
+        line-height: 2rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+}
