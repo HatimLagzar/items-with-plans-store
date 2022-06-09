@@ -19,6 +19,7 @@
       <th>Type</th>
       <th>Price</th>
       <th>Client</th>
+      <th>Phone</th>
       <th>Email</th>
       <th>Invoice Url</th>
       <th>Created At</th>
@@ -31,6 +32,7 @@
         <td>{{ $order->getTicketPlan()->getName() }}</td>
         <td>€ {{ number_format($order->getTicketPlan()->getPrice() / 100, 2) }}</td>
         <td>{{ $order->getUser()->getFirstName() }} {{ $order->getUser()->getLastName() }}</td>
+        <td>{{ $order->getUser()->getPhoneNumber() }}</td>
         <td>{{ $order->getUser()->getEmail() }}</td>
         <td><a href="{{ $order->getInvoiceUrl() }}">{{ $order->getInvoiceUrl() }}</a></td>
         <td>{{ $order->getCreatedAt() }}</td>

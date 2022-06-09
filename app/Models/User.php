@@ -80,4 +80,9 @@ class User extends Authenticatable
     {
         return $this->getAttribute(self::EMAIL_COLUMN);
     }
+
+    public function getPhoneNumber(): string
+    {
+        return $this->getAttribute(self::PHONE_COLUMN);
+    }
 }
