@@ -6,7 +6,7 @@
   # {{ $order->getTicket()->getTitle() }} {{ __('Order Invoice') }}
 
   @component('mail::button', ['url' => $order->getInvoiceUrl()])
-    Click Here
+    {{ __('Pay your invoice by clicking this link') }}
   @endcomponent
 
   Thanks,<br>
