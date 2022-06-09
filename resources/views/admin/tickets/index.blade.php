@@ -1,5 +1,5 @@
 @php
-  /** @var \App\Models\Ticket[]|\Illuminate\Database\Eloquent\Collection */
+  /** @var $tickets \App\Models\Ticket[]|\Illuminate\Database\Eloquent\Collection */
 @endphp
 @extends('admin.layouts.auth-template')
 @section('title')

@@ -4,6 +4,7 @@ namespace App\Repositories\Order;
 
 use App\Models\Order;
 use App\Repositories\AbstractEloquentRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class OrderRepository extends AbstractEloquentRepository
 {
@@ -18,6 +19,23 @@ class OrderRepository extends AbstractEloquentRepository
     {
         return $this->getQueryBuilder()
                     ->create($attributes);
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getAll(): Collection|array
+    {
+        return $this->getQueryBuilder()
+                    ->latest()
+                    ->get();
+    }
+
+    public function update(int $id, array $attributes): bool
+    {
+        return $this->getQueryBuilder()
+                    ->where(Order::ID_COLUMN, $id)
+                    ->update($attributes) > 0;
     }
 
     protected function getModelClass(): string

@@ -3,6 +3,9 @@
 use App\Http\Controllers\Admin\Auth\AuthenticateController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\Order\IndexController as IndexOrdersController;
+use App\Http\Controllers\Admin\Order\SendInvoiceController;
+use App\Http\Controllers\Admin\Order\SendInvoiceOrdersController;
 use App\Http\Controllers\Admin\Ticket\CreateController as CreateTicketsController;
 use App\Http\Controllers\Admin\Ticket\DestroyController as DestroyTicketsController;
 use App\Http\Controllers\Admin\Ticket\EditController as EditTicketsController;
@@ -29,5 +32,14 @@ Route::middleware(IsAdminMiddleware::class)->group(function () {
         Route::get('{id}/edit', EditTicketsController::class)->name('edit');
         Route::put('{id}', UpdateTicketsController::class)->name('update');
         Route::delete('{id}', DestroyTicketsController::class)->name('destroy');
+    });
+
+    Route::prefix('orders')->name('orders.')->group(function () {
+        Route::get('/', IndexOrdersController::class)
+             ->name('index');
+        Route::get('{id}/send-invoice', SendInvoiceOrdersController::class)
+             ->name('send-invoice');
+        Route::post('{id}/send-invoice', SendInvoiceController::class)
+             ->name('send');
     });
 });

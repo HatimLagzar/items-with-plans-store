@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,12 +19,18 @@ class Order extends Model
     public const TICKET_PLAN_ID_COLUMN = 'ticket_plan_id';
     public const USER_ID_COLUMN = 'user_id';
     public const PAYMENT_TYPE_COLUMN = 'payment_type';
+    public const CREATED_AT_COLUMN = 'created_at';
+    public const INVOICE_URL_COLUMN = 'invoice_url';
 
     protected $table = self::TABLE;
     protected $fillable = [
         self::TICKET_PLAN_ID_COLUMN,
         self::USER_ID_COLUMN,
         self::PAYMENT_TYPE_COLUMN,
+    ];
+
+    protected $casts = [
+        self::CREATED_AT_COLUMN => 'datetime'
     ];
 
     private ?User $user = null;
@@ -55,6 +62,16 @@ class Order extends Model
     public function getTicketPlanId(): int
     {
         return $this->getAttribute(self::TICKET_PLAN_ID_COLUMN);
+    }
+
+    public function getCreatedAt(): Carbon
+    {
+        return $this->getAttribute(self::CREATED_AT_COLUMN);
+    }
+
+    public function getInvoiceUrl(): ?string
+    {
+        return $this->getAttribute(self::INVOICE_URL_COLUMN);
     }
 
     public function getTicketPlan(): ?TicketPlan

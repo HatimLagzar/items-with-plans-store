@@ -75,4 +75,9 @@ class User extends Authenticatable
     {
         return $this->getAttribute(self::LAST_NAME_COLUMN);
     }
+
+    public function getEmail(): string
+    {
+        return $this->getAttribute(self::EMAIL_COLUMN);
+    }
 }

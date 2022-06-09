@@ -29,6 +29,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('admin.tickets.index') }}">Tickets</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.orders.index') }}">Orders</a>
+        </li>
       </ul>
     </div>
   </div>
