@@ -9,6 +9,7 @@ use App\Http\Controllers\Client\Order\ShowOrderSuccessController;
 use App\Http\Controllers\Client\Register\RegisterController;
 use App\Http\Controllers\Client\Register\ShowRegisterPageController;
 use App\Http\Controllers\Client\Ticket\ShowTicketController;
+use App\Http\Controllers\Client\Ticket\ShowUserTicketsController;
 use App\Http\Controllers\Client\TicketPlan\ShowController as AskForPaymentMethodPlanController;
 use App\Http\Controllers\Client\Verification\AskForVerificationController;
 use App\Http\Controllers\Client\Verification\ResendVerificationController;
@@ -78,6 +79,10 @@ Route::prefix('tickets')->name('tickets.')->group(function () {
 
     Route::get('{id}', ShowTicketController::class)
          ->name('show');
+
+    Route::get('/', ShowUserTicketsController::class)
+         ->name('index')
+         ->middleware('auth:web');
 
     Route::prefix('plans')->name('plans.')->group(function () {
         Route::get('{id}', AskForPaymentMethodPlanController::class)

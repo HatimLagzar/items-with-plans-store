@@ -38,6 +38,17 @@ class OrderRepository extends AbstractEloquentRepository
                     ->update($attributes) > 0;
     }
 
+    /**
+     * @return Collection|Order[]
+     */
+    public function getAllByUser(int $userId): Collection|array
+    {
+        return $this->getQueryBuilder()
+                    ->where(Order::USER_ID_COLUMN, $userId)
+                    ->latest()
+                    ->get();
+    }
+
     protected function getModelClass(): string
     {
         return Order::class;

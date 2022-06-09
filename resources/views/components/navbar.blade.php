@@ -11,7 +11,7 @@
         </li>
         @if(\Illuminate\Support\Facades\Auth::user() instanceof \App\Models\User)
           <li class="nav-item">
-            <a class="nav-link" href="#">{{ __('My Tickets') }}</a>
+            <a class="nav-link" href="{{ route('tickets.index') }}">{{ __('My Tickets') }}</a>
           </li>
           <li class="nav-item">
             <form action="{{ route('logout') }}" method="POST">

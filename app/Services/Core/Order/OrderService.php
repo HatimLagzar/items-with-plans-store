@@ -3,6 +3,7 @@
 namespace App\Services\Core\Order;
 
 use App\Models\Order;
+use App\Models\User;
 use App\Repositories\Order\OrderRepository;
 use App\Repositories\Ticket\TicketRepository;
 use App\Repositories\TicketPlan\TicketPlanRepository;
@@ -73,5 +74,18 @@ class OrderService
     public function update(int $id, array $attributes): bool
     {
         return $this->orderRepository->update($id, $attributes);
+    }
+
+    /**
+     * @param  User  $user
+     *
+     * @return Order[]|Collection
+     */
+    public function getAllByUser(User $user): Collection|array
+    {
+        return $this->orderRepository->getAllByUser($user->getId())
+                                     ->transform(function (Order $order) {
+                                         return $this->hydrateWithTicketPlanAndTicket($order);
+                                     });
     }
 }
