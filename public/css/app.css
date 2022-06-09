@@ -147,6 +147,9 @@ h1 {
     margin-bottom: 0.75rem;
   }
 }
+#home-page {
+  background: linear-gradient(180deg, #1E1E1E, #000000);
+}
 #home-page #header {
   background-image: url(/images/header.jpg);
   background-position-y: 60%;
