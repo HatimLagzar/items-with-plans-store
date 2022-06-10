@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  tickets_seller_web:
+    container_name: "tickets_seller_web"
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: "./"
+        target: "/var/www"
+    networks:
+      - tickets_seller_network
+  
+  tickets_seller_db:
+    image: mysql
+    hostname: 'mysql'
+    container_name: tickets_seller_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "tickets_seller"
+      MYSQL_ROOT_PASSWORD: "@root@"
+    volumes:
+      - tickets_seller_db_data:/var/lib/mysql:rw
+    networks:
+      - tickets_seller_network
+
+  phpmyadmin:
+    image: phpmyadmin
+    hostname: 'phpmyadmin'
+    container_name: 'tickets_seller_phpmyadmin'
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - tickets_seller_network
+
+networks:
+  tickets_seller_network:
+    driver: bridge
+
+volumes:
+  tickets_seller_db_data: { }
