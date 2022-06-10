@@ -2,8 +2,6 @@
 
 namespace App\Services\Domain\Order;
 
-use App\DTO\Phone\Exception\InvalidPhoneException;
-use App\DTO\Phone\Phone;
 use App\Mail\OrderCreatedMail;
 use App\Models\Order;
 use App\Models\TicketPlan;
@@ -29,15 +27,10 @@ class CreateOrderService
         $this->registerService = $registerService;
     }
 
-    /**
-     * @throws InvalidPhoneException
-     */
     public function create(TicketPlan $ticketPlan, array $attributes): Order
     {
-        $attributes[User::PHONE_COLUMN] = (new Phone($attributes[User::PHONE_COLUMN]))->getPhoneNumber();
-
         $email = $attributes[User::EMAIL_COLUMN];
-        $user  = $this->userService->findByEmail($email);
+        $user  = auth()->guard('web')->user() ?? $this->userService->findByEmail($email);
         if ( ! $user instanceof User) {
             $user = $this->registerService->register(
                 $attributes[User::FIRST_NAME_COLUMN],
