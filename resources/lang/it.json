@@ -63,5 +63,16 @@
     "Name": "Nome",
     "Subject": "Materia",
     "Message": "Messaggio",
-    "Send": "Inviare"
+    "Send": "Inviare",
+    "Contact": "Contatto",
+    "Error occurred, please retry later!": "Si è verificato un errore, riprova più tardi!",
+    "Your message has been sent successfully.": "Il tuo messaggio è stato inviato con successo.",
+    "Incorrect credentials!": "Credenziali errate!",
+    "You did login successfully.": "Hai effettuato l'accesso con successo.",
+    "Account created successfully!": "Account creato con successo!",
+    "Email already in use!": "Email già in uso!",
+    "Ticket was not found!": "Il biglietto non è stato trovato!",
+    "Ticket plan was not found!": "Il piano del biglietto non è stato trovato!",
+    "Verification link was sent successfully!": "Il link di verifica è stato inviato con successo!",
+    "Email Address verified successfully.": "Indirizzo e-mail verificato correttamente."
 }
