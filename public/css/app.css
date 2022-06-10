@@ -48,6 +48,12 @@ section h2 {
   border-color: #7f3d9b !important;
 }
 
+.form-control {
+  border-radius: 0;
+  border: 0;
+  padding: 0.85rem 1rem;
+}
+
 h1,
 h2,
 h3,

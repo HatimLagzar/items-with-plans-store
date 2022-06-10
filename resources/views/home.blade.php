@@ -46,5 +46,36 @@
         <a href="#" class="btn btn-primary see-all-tickets">{{ __('See All Tickets') }}</a>
       </div>
     </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="text-center">{{__('Get In Touch')}}</h2>
+        <div class="container">
+          <form action="{{ route('contact') }}" method="POST" class="col-lg-6 col-12 mx-auto">
+            @csrf
+
+            <div class="input-group mb-2">
+              <input type="text" placeholder="{{__('Name')}}" class="form-control" name="name">
+            </div>
+
+            <div class="input-group mb-2">
+              <input type="text" placeholder="{{__('Subject')}}" class="form-control" name="subject">
+            </div>
+
+            <div class="input-group mb-2">
+              <input type="email" placeholder="{{__('Email Address')}}" class="form-control" name="email">
+            </div>
+
+            <div class="input-group mb-2">
+              <textarea placeholder="{{__('Message')}}" class="form-control" name="message"></textarea>
+            </div>
+
+            <div class="input-group">
+              <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </div>
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Client\Contact\ContactUsController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\Login\LoginController;
 use App\Http\Controllers\Client\Login\LogoutController;
@@ -30,6 +31,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('contact', ContactUsController::class)->name('contact');
 
 Route::name('verification.')->group(function () {
     Route::get('email/verify/{id}/{hash}', VerifyController::class)
