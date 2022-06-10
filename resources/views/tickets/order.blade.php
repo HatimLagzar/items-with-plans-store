@@ -11,7 +11,7 @@
 
   <section id="order-ticket">
     <div class="container">
-      <h1 class="mb-5">Order Ticket</h1>
+      <h1 class="mb-5">{{ __('Order Ticket') }}</h1>
 
       <div class="order-info">
         <h2 class="mb-4">{{ __('Ticket Details') }}</h2>

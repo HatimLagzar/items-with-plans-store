@@ -3,7 +3,7 @@
 @endphp
 
 @component('mail::message')
-# Email Verification
+# {{__('Email Verification')}}
 
 {{ __('Hi') }},
 {{ __('Please verify your account by clicking on the link below.') }}

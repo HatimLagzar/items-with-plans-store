@@ -4,7 +4,7 @@
 
 @extends('layouts.app')
 @section('title')
-  Home
+  {{ __('Home') }}
 @endsection
 @section('content')
   <div id="home-page">
@@ -42,14 +42,12 @@
             </div>
           </div>
         @endforeach
-
-        <a href="#" class="btn btn-primary see-all-tickets">{{ __('See All Tickets') }}</a>
       </div>
     </section>
 
     <section id="contact">
       <div class="container">
-        <h2 class="text-center">{{__('Get In Touch')}}</h2>
+        <h2 class="text-center">{{__('Contact Us')}}</h2>
         <div class="container">
           <form action="{{ route('contact') }}" method="POST" class="col-lg-6 col-12 mx-auto">
             @csrf
