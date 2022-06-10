@@ -37,6 +37,7 @@ class CreateOrderService
                 $attributes[User::LAST_NAME_COLUMN],
                 $attributes[User::EMAIL_COLUMN],
                 $attributes[User::PHONE_COLUMN],
+                $attributes[User::PASSWORD_COLUMN],
             );
         }
 

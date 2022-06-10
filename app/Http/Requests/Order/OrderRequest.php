@@ -11,6 +11,7 @@ class OrderRequest extends FormRequest
         return [
             'first_name'   => ['required', 'string', 'max:191'],
             'last_name'    => ['required', 'string', 'max:191'],
+            'password'     => ['required', 'confirmed', 'max:191'],
             'email'        => ['required', 'email', 'max:191'],
             'phone'        => ['required', 'max:15'],
             'payment_type' => ['required', 'min:1', 'max:3', 'numeric']

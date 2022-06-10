@@ -56,6 +56,24 @@
               </div>
               @enderror
             </div>
+            <div class="form-group mb-3">
+              <label for="passwordInput" class="form-label">{{ __('Password') }}</label>
+              <input id="passwordInput" type="password" placeholder="{{__('Password')}}" class="form-control @error('password') is-invalid @enderror" name="password" required>
+              <div class="invalid-feedback">
+                @error('password')
+                {{ $message }}
+                @enderror
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label for="passwordConfInput" class="form-label">{{ __('Password Confirmation') }}</label>
+              <input id="passwordConfInput" type="password" placeholder="{{__('Password Confirmation')}}" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required>
+              <div class="invalid-feedback">
+                @error('password_confirmation')
+                {{ $message }}
+                @enderror
+              </div>
+            </div>
           @endif
 
           <div class="form-group mb-3">
