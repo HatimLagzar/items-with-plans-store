@@ -23,18 +23,20 @@ class Order extends Model
     public const INVOICE_URL_COLUMN = 'invoice_url';
     public const SECRET_KEY_COLUMN = 'secret_key';
     public const IS_PAID_COLUMN = 'is_paid';
+    public const HAS_CHECKED_IN_COLUMN = 'has_checked_in';
 
     protected $table = self::TABLE;
     protected $fillable = [
         self::TICKET_PLAN_ID_COLUMN,
         self::USER_ID_COLUMN,
         self::PAYMENT_TYPE_COLUMN,
-        self::SECRET_KEY_COLUMN
+        self::SECRET_KEY_COLUMN,
     ];
 
     protected $casts = [
-        self::CREATED_AT_COLUMN => 'datetime',
-        self::IS_PAID_COLUMN    => 'boolean'
+        self::CREATED_AT_COLUMN     => 'datetime',
+        self::IS_PAID_COLUMN        => 'boolean',
+        self::HAS_CHECKED_IN_COLUMN => 'boolean'
     ];
 
     private ?User $user = null;
@@ -54,6 +56,11 @@ class Order extends Model
     public function isPaid(): bool
     {
         return $this->getAttribute(self::IS_PAID_COLUMN);
+    }
+
+    public function hasCheckedIn(): bool
+    {
+        return $this->getAttribute(self::HAS_CHECKED_IN_COLUMN);
     }
 
     public function getUserId(): int
