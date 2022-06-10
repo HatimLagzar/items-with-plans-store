@@ -16,7 +16,7 @@
           <li class="nav-item">
             <form action="{{ route('logout') }}" method="POST">
               @csrf
-              <button class="nav-link btn">Logout</button>
+              <button class="nav-link btn">{{ __('Logout') }}</button>
             </form>
           </li>
         @else
@@ -28,7 +28,7 @@
           </li>
         @endif
         <li class="nav-item">
-          <a class="nav-link" href="#contact">{{ __('Contact') }}</a>
+          <a class="nav-link" href="{{ route('home') }}#contact">{{ __('Contact') }}</a>
         </li>
       </ul>
     </div>

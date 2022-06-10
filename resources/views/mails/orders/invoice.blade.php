@@ -9,6 +9,6 @@
   {{ __('Pay your invoice by clicking this link') }}
 @endcomponent
 
-Thanks,<br>
+{{ __('Thanks') }},<br>
 {{ config('app.name') }}
 @endcomponent

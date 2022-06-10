@@ -5,13 +5,13 @@
 @component('mail::message')
 # Email Verification
 
-Hi,
-Please verify your account by clicking on the link below.
+{{ __('Hi') }},
+{{ __('Please verify your account by clicking on the link below.') }}
 
 @component('mail::button', ['url' => route('verification.verify', ['id' => $user->getId(), 'hash' => $user->getVerificationToken()])])
-	Click Here
+	{{ __('Click Here') }}
 @endcomponent
 
-Thanks,<br>
+{{ __('Thanks') }},<br>
 {{ config('app.name') }}
 @endcomponent
