@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.noauth-template')
 @section('content')
     <div class="container w-25 mt-5">
         <h1>Please Login</h1>
