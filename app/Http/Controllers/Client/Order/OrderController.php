@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Client\Order;
 
-use App\DTO\Phone\Exception\InvalidPhoneException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\OrderRequest;
 use App\Models\TicketPlan;
@@ -39,10 +38,6 @@ class OrderController extends Controller
 
             return redirect()
                 ->route('tickets.success');
-        } catch (InvalidPhoneException $e) {
-            return redirect()
-                ->back()
-                ->with('error', __('Invalid phone number!'));
         } catch (Throwable $e) {
             Log::error('failed to order ticket', [
                 'error_message' => $e->getMessage(),
