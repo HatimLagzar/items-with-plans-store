@@ -49,6 +49,13 @@ class OrderRepository extends AbstractEloquentRepository
                     ->get();
     }
 
+    public function findBySecretKey(string $secretKey): ?Order
+    {
+        return $this->getQueryBuilder()
+                    ->where(Order::SECRET_KEY_COLUMN, $secretKey)
+                    ->first();
+    }
+
     protected function getModelClass(): string
     {
         return Order::class;

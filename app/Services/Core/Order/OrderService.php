@@ -91,4 +91,14 @@ class OrderService
                                          return $this->hydrateWithTicketPlanAndTicket($order);
                                      });
     }
+
+    public function findBySecretKey(string $secretKey): ?Order
+    {
+        $order = $this->orderRepository->findBySecretKey($secretKey);
+        if ( ! $order instanceof Order) {
+            return null;
+        }
+
+        return $this->hydrate($order);
+    }
 }

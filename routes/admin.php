@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Auth\AuthenticateController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\Order\CheckOrderController;
 use App\Http\Controllers\Admin\Order\IndexController as IndexOrdersController;
 use App\Http\Controllers\Admin\Order\MarkOrderAsPaidController;
 use App\Http\Controllers\Admin\Order\SendInvoiceController;
@@ -44,7 +45,7 @@ Route::middleware(IsAdminMiddleware::class)->group(function () {
              ->name('send');
         Route::post('{id}/mark-as-paid', MarkOrderAsPaidController::class)
              ->name('mark-as-paid');
-        Route::post('{secretKey}', MarkOrderAsPaidController::class)
+        Route::get('{secretKey}', CheckOrderController::class)
              ->name('check');
     });
 });
