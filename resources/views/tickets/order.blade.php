@@ -26,35 +26,37 @@
         <h2 class="mt-5 mb-4">{{ __('Please fill in your personal information, our team will contact you with the invoice.') }}</h2>
         <form action="{{ route('tickets.plans.store', ['id' => $plan->getId()]) }}" method="POST">
           @csrf
-          <div class="form-group mb-3">
-            <label for="firstNameInput" class="form-label">{{__('First Name')}}</label>
-            <input type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" id="firstNameInput" placeholder="{{ __('First Name') }}" required>
-            @error('first_name')
-            <div class="invalid-feedback">
-              {{ $message }}
+          @if (!auth()->guard('web')->user() instanceof \App\Models\User)
+            <div class="form-group mb-3">
+              <label for="firstNameInput" class="form-label">{{__('First Name')}}</label>
+              <input type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" id="firstNameInput" placeholder="{{ __('First Name') }}" required>
+              @error('first_name')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
             </div>
-            @enderror
-          </div>
 
-          <div class="form-group mb-3">
-            <label for="lastNameInput" class="form-label">{{__('Last Name')}}</label>
-            <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="lastNameInput" placeholder="{{ __('Last Name') }}" required>
-            @error('last_name')
-            <div class="invalid-feedback">
-              {{ $message }}
+            <div class="form-group mb-3">
+              <label for="lastNameInput" class="form-label">{{__('Last Name')}}</label>
+              <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="lastNameInput" placeholder="{{ __('Last Name') }}" required>
+              @error('last_name')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
             </div>
-            @enderror
-          </div>
 
-          <div class="form-group mb-3">
-            <label for="emailInput" class="form-label">{{__('Email Address')}}</label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="emailInput" placeholder="{{ __('Email Address') }}" required>
-            @error('email')
-            <div class="invalid-feedback">
-              {{ $message }}
+            <div class="form-group mb-3">
+              <label for="emailInput" class="form-label">{{__('Email Address')}}</label>
+              <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="emailInput" placeholder="{{ __('Email Address') }}" required>
+              @error('email')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
             </div>
-            @enderror
-          </div>
+          @endif
 
           <div class="form-group mb-3">
             <label for="phoneInput" class="form-label">{{__('Phone Number')}}</label>
