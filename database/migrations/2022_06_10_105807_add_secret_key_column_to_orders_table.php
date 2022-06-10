@@ -13,7 +13,8 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('invoice_url')->nullable();
+            $table->string('secret_key');
+            $table->boolean('is_paid')->default(0);
         });
     }
 
@@ -25,7 +26,8 @@ return new class extends Migration {
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('invoice_url');
+            $table->dropColumn('secret_key');
+            $table->dropColumn('is_paid');
         });
     }
 };

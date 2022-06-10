@@ -21,16 +21,20 @@ class Order extends Model
     public const PAYMENT_TYPE_COLUMN = 'payment_type';
     public const CREATED_AT_COLUMN = 'created_at';
     public const INVOICE_URL_COLUMN = 'invoice_url';
+    public const SECRET_KEY_COLUMN = 'secret_key';
+    public const IS_PAID_COLUMN = 'is_paid';
 
     protected $table = self::TABLE;
     protected $fillable = [
         self::TICKET_PLAN_ID_COLUMN,
         self::USER_ID_COLUMN,
         self::PAYMENT_TYPE_COLUMN,
+        self::SECRET_KEY_COLUMN
     ];
 
     protected $casts = [
-        self::CREATED_AT_COLUMN => 'datetime'
+        self::CREATED_AT_COLUMN => 'datetime',
+        self::IS_PAID_COLUMN    => 'boolean'
     ];
 
     private ?User $user = null;
@@ -40,6 +44,16 @@ class Order extends Model
     public function getId(): int
     {
         return $this->getAttribute(self::ID_COLUMN);
+    }
+
+    public function getSecretKey(): string
+    {
+        return $this->getAttribute(self::SECRET_KEY_COLUMN);
+    }
+
+    public function isPaid(): bool
+    {
+        return $this->getAttribute(self::IS_PAID_COLUMN);
     }
 
     public function getUserId(): int

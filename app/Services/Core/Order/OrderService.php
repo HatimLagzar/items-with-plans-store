@@ -9,6 +9,7 @@ use App\Repositories\Ticket\TicketRepository;
 use App\Repositories\TicketPlan\TicketPlanRepository;
 use App\Repositories\User\UserRepository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 class OrderService
 {
@@ -32,6 +33,8 @@ class OrderService
 
     public function create(array $attributes): Order
     {
+        $attributes[Order::SECRET_KEY_COLUMN] = Str::uuid();
+
         return $this->orderRepository->create($attributes);
     }
 
