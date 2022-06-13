@@ -29,15 +29,13 @@
                 </span>
                 <span class="ticket-time">{{ $ticket->getDateAndTime()->format('h:i A') }}</span>
               </div>
-              <div class="col-lg-7 col-sm-6 col-9 d-flex flex-column justify-content-center ticket-title">
+              <div class="col-lg-6 col-sm-6 col-9 d-flex flex-column justify-content-center ticket-title">
                 <h3>{{ $ticket->getTitle() }}</h3>
                 <h4>{{ $ticket->getCity() }}</h4>
                 <h4>{{ $ticket->getLocation() }}</h4>
               </div>
-              <div class="col-lg-3 col-sm-4 col-12 d-flex flex-column justify-content-center align-items-center buy-now-wrapper">
-                <form action="{{ route('tickets.show', ['id' => $ticket->getId()]) }}">
-                  <button class="btn btn-primary buy-ticket"><i class="fa fa-ticket me-2"></i>{{ __('Buy Ticket') }}</button>
-                </form>
+              <div class="col-lg-4 col-sm-4 col-12 d-flex flex-column justify-content-center align-items-center buy-now-wrapper">
+                <a href="{{ route('tickets.show', ['id' => $ticket->getId()]) }}" class="btn btn-primary buy-ticket"><i class="fa fa-ticket me-2"></i>{{ __('Buy Ticket') }}</a>
               </div>
             </div>
           </div>
