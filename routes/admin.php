@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Auth\AuthenticateController;
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\Auth\LogoutController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\Order\CheckOrderController;
 use App\Http\Controllers\Admin\Order\IndexController as IndexOrdersController;
@@ -25,6 +26,9 @@ Route::post('login', AuthenticateController::class)
      ->name('authenticate');
 
 Route::middleware(IsAdminMiddleware::class)->group(function () {
+     Route::post('logout', LogoutController::class)
+          ->name('logout');
+
     Route::get('/', HomeController::class)->name('home');
 
     Route::prefix('tickets')->name('tickets.')->group(function () {

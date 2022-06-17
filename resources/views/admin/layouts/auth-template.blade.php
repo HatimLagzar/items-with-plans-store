@@ -32,6 +32,12 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('admin.orders.index') }}">Orders</a>
         </li>
+        <li class="nav-item">
+          <form action="{{ route('admin.logout') }}" method="POST">
+            @csrf
+            <button class="btn nav-link" href="{{ route('admin.logout') }}">Logout</button>
+          </form>
+        </li>
       </ul>
     </div>
   </div>
