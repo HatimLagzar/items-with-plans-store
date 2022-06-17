@@ -15,6 +15,7 @@
       <h4 class="text-center">{{ $ticket->getCity() }}</h4>
       <h4 class="text-center mb-5">{{ $ticket->getLocation() }}</h4>
       @foreach($ticket->getPlans() as $plan)
+        @if ($plan->getStock() > 0)
         <div class="ticket-item">
           <div class="row">
             <div class="col-lg-2 col-sm-2 col-3 text-center d-flex flex-column justify-content-center align-items-center">
@@ -34,6 +35,7 @@
             </div>
           </div>
         </div>
+        @endif
       @endforeach
     </div>
   </section>

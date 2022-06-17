@@ -34,6 +34,12 @@ class OrderController extends Controller
                     ->with('error', __('Ticket type was not found!'));
             }
 
+            if ($ticketPlan->getStock() <= 0) {
+                return redirect()
+                    ->back()
+                    ->with('error', __('Out of stock!'));
+            }
+
             $this->createOrderService->create($ticketPlan, $request->validated());
 
             return redirect()
